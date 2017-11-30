@@ -1,0 +1,4 @@
+location /$PROJECT_NAME {
+    proxy_pass http://localhost:$EXPOSE_HTTP_PORT;
+}
+

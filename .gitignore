@@ -1,0 +1,67 @@
+# Java
+*.class
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# Full .idea
+.idea/
+*.iml
+
+# Gradle:
+.gradle/
+build/
+
+## File-based project format:
+*.iws
+
+## Plugin-specific files:
+
+# IntelliJ
+/out/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
+
+# third-party
+bower/
+node_modules/
+*lock.json
+**/vender/
+
+# Nginx conf output
+*.conf
+*.conf.https
+
+# docker-compose output
+docker-compose.yml
+
+# SQL backup
+*.bak
+db.rows.sql
+
+# .DS_Store
+.DS_Store

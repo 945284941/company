@@ -1,0 +1,51 @@
+version: '3'
+services:
+    $TOMCAT_HOST_NAME:
+        image: "tomcat"
+        hostname: $TOMCAT_HOST_NAME
+        restart: always
+        working_dir: /usr/local/tomcat
+        ports:
+            - "$EXPOSE_HTTP_PORT:8080"
+            # - "$EXPOSE_HTTPS_PORT:8443"
+        environment:
+            - LANG=C.UTF-8
+            - LC_ALL=C.UTF-8
+            - TZ=Asia/Shanghai
+        volumes:
+            - /srv/docker/$COMPOSE_PROJECT_NAME/$TOMCAT_HOST_NAME:/usr/local/tomcat/webapps
+        depends_on:
+            - db
+            - cache
+
+    $MYSQL_HOST_NAME:
+        image: "mysql"
+        hostname: $MYSQL_HOST_NAME
+        restart: always
+        working_dir: /var/lib/mysql
+        command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        ports:
+            - "3306:3306"
+        environment:
+            - LANG=C.UTF-8
+            - LC_ALL=C.UTF-8
+            - TZ=Asia/Shanghai
+            - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+            - MYSQL_DATABASE=$COMPOSE_PROJECT_NAME
+            - MYSQL_USER=$COMPOSE_PROJECT_NAME
+            - MYSQL_PASSWORD=$COMPOSE_PROJECT_NAME.docker
+        volumes:
+            - /srv/docker/$COMPOSE_PROJECT_NAME/$MYSQL_HOST_NAME:/var/lib/mysql
+
+    $REDIS_HOST_NAME:
+        image: "redis"
+        hostname: $REDIS_HOST_NAME
+        restart: always
+        working_dir: /data
+        # ports:
+        #     - "6379:6379"
+        environment:
+            - TZ=Asia/Shanghai
+        volumes:
+            - /srv/docker/$COMPOSE_PROJECT_NAME/$REDIS_HOST_NAME:/data
+
